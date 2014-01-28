@@ -6,3 +6,5 @@ Magic:
 
 1. make
 2. ./mtx
+
+Made with love.
