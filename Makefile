@@ -1,4 +1,4 @@
-# Compiler
+# Compiler (clang or gcc)
 CC = clang
 # Ohoh, we will link using CCL
 CCL = clang++
