@@ -3,5 +3,6 @@ On the way of comprehending MTProto.
 Getting auth key and pinging the server.
 
 Magic:
-$ make
-$ ./mtx
+
+1. make
+2. ./mtx
