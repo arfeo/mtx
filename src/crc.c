@@ -1,5 +1,5 @@
 //
-//  crc32.cpp
+//  crc32.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 07.12.13.

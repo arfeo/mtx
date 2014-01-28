@@ -1,5 +1,5 @@
 //
-//  scl.cpp
+//  scl.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 24.01.14.

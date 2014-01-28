@@ -1,5 +1,5 @@
 //
-//  hdl.cpp
+//  hdl.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 24.01.14.

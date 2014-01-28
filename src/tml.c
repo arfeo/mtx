@@ -1,5 +1,5 @@
 //
-//  tml.cpp
+//  tml.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 18.01.14.

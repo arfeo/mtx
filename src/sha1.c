@@ -1,5 +1,5 @@
 //
-//  sha1.cpp
+//  sha1.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 07.12.13.

@@ -1,5 +1,5 @@
 //
-//  cry.cpp
+//  cry.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 19.01.14.

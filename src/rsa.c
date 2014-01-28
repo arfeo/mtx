@@ -1,5 +1,5 @@
 //
-//  rsa.cpp
+//  rsa.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 08.12.13.

@@ -1,5 +1,5 @@
 //
-//  tgt.cpp
+//  tgt.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 18.01.14.
@@ -934,7 +934,7 @@ method_ping_t method_ping_drive(method_ping_t m)
 method_auth_sendCode_t method_auth_sendCode_init()
 {
     method_auth_sendCode_t m = method_auth_sendCode;
-    char* phone_number = "+79062720XXX";
+    char* phone_number = "+79062720464";
     m.phone_number.value = api.buf.add((ui8_t*)phone_number, (ui32_t)strlen(phone_number));
     ui32_t sms_type = 0;
     m.sms_type.value = api.buf.add_ui32(sms_type);

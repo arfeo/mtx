@@ -1,5 +1,5 @@
 //
-//  srl.cpp
+//  srl.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 17.01.14.

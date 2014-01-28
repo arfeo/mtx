@@ -4,9 +4,7 @@
 #include <map>
 #include <vector>
 
-
 using namespace std;
-
 
 long long absx(long long n)
 {

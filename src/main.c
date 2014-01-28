@@ -11,7 +11,7 @@
 // trl -- transport layer
 // sel -- serialization layer
 // enl -- encrypt layer
-// tmp -- tg methods layer
+// tml -- tg methods layer
 // tgt -- tg types
 // stk -- stack
 // sil -- simple interm. layer

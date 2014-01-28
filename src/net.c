@@ -1,5 +1,5 @@
 //
-//  net.cpp
+//  net.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 07.12.13.

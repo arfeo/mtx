@@ -1,5 +1,5 @@
 //
-//  sel.cpp
+//  sel.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 18.01.14.

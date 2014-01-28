@@ -1,5 +1,5 @@
 //
-//  cmn.cpp
+//  cmn.c
 //  mtx
 //
 //  Created by Pavel Morozkin on 18.01.14.
