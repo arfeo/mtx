@@ -12,8 +12,8 @@
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
 
-int aes_d(const unsigned char* in, unsigned char* out,
-          const unsigned int l, const unsigned char* k, unsigned char* iv)
+int aes_d(const unsigned char * in, unsigned char * out,
+          const unsigned int l, const unsigned char * k, unsigned char * iv)
 {
     AES_KEY key;
     AES_set_decrypt_key(k, 256, &key);
@@ -21,8 +21,8 @@ int aes_d(const unsigned char* in, unsigned char* out,
     return l;
 }
 
-int aes_e(const unsigned char* in, unsigned char* out,
-          const unsigned int l, unsigned char* k, unsigned char* iv)
+int aes_e(const unsigned char * in, unsigned char * out,
+          const unsigned int l, unsigned char * k, unsigned char * iv)
 {
     AES_KEY key;
     AES_set_encrypt_key(k, 256, &key);

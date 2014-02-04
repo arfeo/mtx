@@ -18,8 +18,8 @@ typedef uint32_t    ui32_t;
 typedef int32_t     i32_t;
 typedef uint8_t     ui8_t;
 
-typedef char* string_t;
-typedef ui8_t* array_t;
+typedef char * string_t;
+typedef ui8_t * array_t;
 
 typedef struct buf_
 {

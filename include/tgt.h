@@ -220,7 +220,7 @@ struct method_req_DH_params_
 };
 method_req_DH_params_t method_req_DH_params_init(method_req_pq_t m1);
 method_req_DH_params_t method_req_DH_params_drive(method_req_DH_params_t
-                                                  m);
+        m);
 
 /*
  *

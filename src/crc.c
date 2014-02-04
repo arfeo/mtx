@@ -56,22 +56,20 @@ static uint32_t crc32_tab[] =
 };
 
 #include <stddef.h>
-uint32_t crc32_(uint32_t crc, const void* buf, size_t size)
+uint32_t crc32_(uint32_t crc, const void * buf, size_t size)
 {
-    const uint8_t* p;
-    p = (uint8_t*)buf;
+    const uint8_t * p;
+    p = (uint8_t *)buf;
     crc = crc ^ ~0U;
-
     while (size--)
         crc = crc32_tab[(crc ^ *p++) & 0xFF] ^ (crc >> 8);
-
     return crc ^ ~0U;
 }
 buf_t crc_crc32(const buf_t buf)
 {
     buf_t b;
     uint32_t crc = crc32_(0, buf.data, buf.size);
-    ui8_t* crc_ptr = (ui8_t*)&crc;
+    ui8_t * crc_ptr = (ui8_t *)&crc;
     b = api.buf.add(crc_ptr, sizeof(crc));
     return b;
 }

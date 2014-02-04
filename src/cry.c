@@ -21,10 +21,8 @@ buf_t cry_aes_e(buf_t b, buf_t key, buf_t iv)
 {
     buf_t r = {};
     int l = aes_e(b.data, r.data, b.size, key.data, iv.data);
-
     if (!l)
         api.log.error("error during aes encryption");
-
     r.size = l;
     return r;
 }
@@ -32,10 +30,8 @@ buf_t cry_aes_d(buf_t b, buf_t key, buf_t iv)
 {
     buf_t r = {};
     int l = aes_d(b.data, r.data, b.size, key.data, iv.data);
-
     if (!l)
         api.log.error("error during aes decryption");
-
     r.size = l;
     return r;
 }

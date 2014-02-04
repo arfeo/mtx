@@ -373,22 +373,22 @@ ctor_ResPQ_t ctor_ResPQ =
     0x05162463,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 
     {
-        {},
+        {0},
         TYPE_VECTOR_LONG
     },
 };
@@ -398,7 +398,7 @@ method_req_pq_t req_pq =
     0x60469778,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
     {}
@@ -413,17 +413,17 @@ ctor_Server_DH_Params_ok_t ctor_Server_DH_Params_ok =
     0xd0e8075c,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 };
@@ -433,17 +433,17 @@ ctor_Server_DH_Params_fail_t ctor_Server_DH_Params_fail =
     0x79cb045d,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 };
@@ -453,32 +453,32 @@ method_req_DH_params_t method_req_DH_params =
     0xd712e4be,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 
     {
-        {},
+        {0},
         TYPE_LONG
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
     {}
@@ -489,32 +489,32 @@ ctor_P_Q_inner_data_t ctor_P_Q_inner_data =
     0x83c95aec,
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT256
     },
 };
@@ -524,32 +524,32 @@ ctor_Server_DH_inner_data_t ctor_Server_DH_inner_data =
     0x05890dba,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 
     {
-        {},
+        {0},
         TYPE_INT
     },
 };
@@ -559,22 +559,22 @@ ctor_Client_DH_Inner_Data_t ctor_Client_DH_Inner_Data =
     0x6643b654,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_LONG
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
 };
@@ -585,17 +585,17 @@ ctor_Set_client_DH_params_answer_ok_t ctor_Set_client_DH_params_answer_ok
     0x3bcbf734,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 };
@@ -605,20 +605,108 @@ method_set_client_DH_params_t method_set_client_DH_params =
     0xf5045f1f,
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_INT128
     },
 
     {
-        {},
+        {0},
         TYPE_STRING
     },
     {}
+};
+method_ping_t method_ping =
+{
+    RFC,
+    0x7abe77ec,
+
+    {
+        {0},
+        TYPE_LONG
+    },
+    {}
+};
+ctor_auth_SentCode_t ctor_auth_SentCode =
+{
+    RFC,
+    0x2215bcbd,
+
+    {
+        {0},
+        TYPE_BOOL
+    },
+
+    {
+        {0},
+        TYPE_STRING
+    }
+};
+method_auth_sendCode_t method_auth_sendCode =
+{
+    RFC,
+    0x768d5f4d,
+
+    {
+        {0},
+        TYPE_STRING
+    },
+
+    {
+        {0},
+        TYPE_INT
+    },
+
+    {
+        {0},
+        TYPE_INT
+    },
+
+    {
+        {0},
+        TYPE_STRING
+    },
+
+    {
+        {0},
+        TYPE_STRING
+    },
+    {}
+};
+ctor_NewSession_t ctor_NewSession =
+{
+    RFC,
+    0x9ec20908,
+
+    {
+        {0},
+        TYPE_LONG
+    },
+
+    {
+        {0},
+        TYPE_LONG
+    },
+
+    {
+        {0},
+        TYPE_LONG
+    },
+};
+method_msgs_ack_t method_msgs_ack =
+{
+    RFC,
+    0x62d6b459,
+
+    {
+        {0},
+        TYPE_VECTOR_LONG
+    },
+    {0}
 };
 #endif
 /*
@@ -654,11 +742,11 @@ method_req_DH_params_init(method_req_pq_t m1)
     ui64_t pq = api.buf.get_ui64(api.buf.swap(m1.ctor_ResPQ.pq.value));
     ui32_t p, q;
     api.cmn.fact(pq, &p, &q);
-
     if (!(p < q))
     {
         SWAP(p, q);
     }
+
 
     m.p.value = api.buf.swap(api.buf.add_ui32(p));
     m.q.value = api.buf.swap(api.buf.add_ui32(q));
@@ -733,32 +821,32 @@ ctor_Server_DH_inner_data_init(method_req_pq_t m1,
                                method_req_DH_params_t m2)
 {
     ctor_P_Q_inner_data_t nn = api.tml->ctors->P_Q_inner_data.init(m1,
-                                                                   m2); // hack
+                               m2); // hack
     buf_t new_nonce = nn.new_nonce.value; // hack
     buf_t server_nonce = m1.ctor_ResPQ.server_nonce.value;
     // tmp_aes_key := SHA1(new_nonce + server_nonce) + substr (SHA1(server_nonce + new_nonce), 0, 12);
     buf_t new_nonce_plus_server_nonce = {};
     new_nonce_plus_server_nonce = api.buf.cat(new_nonce_plus_server_nonce,
-                                              new_nonce);
+                                  new_nonce);
     new_nonce_plus_server_nonce = api.buf.cat(new_nonce_plus_server_nonce,
-                                              server_nonce);
+                                  server_nonce);
     buf_t new_nonce_plus_server_nonce_hash = api.hsh.sha1(
-                                                 new_nonce_plus_server_nonce);
+                new_nonce_plus_server_nonce);
     buf_t server_nonce_plus_new_nonce = {};
     server_nonce_plus_new_nonce = api.buf.cat(server_nonce_plus_new_nonce,
-                                              server_nonce);
+                                  server_nonce);
     server_nonce_plus_new_nonce = api.buf.cat(server_nonce_plus_new_nonce,
-                                              new_nonce);
+                                  new_nonce);
     buf_t server_nonce_plus_new_nonce_hash = api.hsh.sha1(
-                                                 server_nonce_plus_new_nonce);
+                server_nonce_plus_new_nonce);
     buf_t substr_sha1_server_nonce_new_nonce012 = api.buf.add(
-                                                      server_nonce_plus_new_nonce_hash.data, 12);
+                server_nonce_plus_new_nonce_hash.data, 12);
     buf_t tmp_aes_key = {};
     tmp_aes_key = api.buf.cat(tmp_aes_key, new_nonce_plus_server_nonce_hash);
     tmp_aes_key = api.buf.cat(tmp_aes_key,
                               substr_sha1_server_nonce_new_nonce012);
     buf_t substr_sha1_server_nonce_new_nonce128 = api.buf.add(
-                                                      server_nonce_plus_new_nonce_hash.data + 12, 8);
+                server_nonce_plus_new_nonce_hash.data + 12, 8);
     buf_t new_nonce_new_nonce = {};
     new_nonce_new_nonce = api.buf.cat(new_nonce_new_nonce, new_nonce);
     new_nonce_new_nonce = api.buf.cat(new_nonce_new_nonce, new_nonce);
@@ -875,16 +963,12 @@ method_set_client_DH_params_drive(method_set_client_DH_params_t m)
     m.ctor_Set_client_DH_params_answer = api.sil.concrete(a).ctor_Set_client_DH_params_answer;
     buf_t nonce = m.ctor_Set_client_DH_params_answer.ctor_Set_client_DH_params_answer_ok.nonce.value;
     buf_t nonce_ = m.ctor_Server_DH_inner_data.nonce.value;
-
     if (!api.buf.cmp(nonce, nonce_))
         api.log.error("different nonce's");
-
     buf_t server_nonce = m.ctor_Set_client_DH_params_answer.ctor_Set_client_DH_params_answer_ok.server_nonce.value;
     buf_t server_nonce_ = m.ctor_Server_DH_inner_data.server_nonce.value;
-
     if (!api.buf.cmp(server_nonce, server_nonce_))
         api.log.error("different server nonce's");
-
     return m;
 }
 /*
@@ -910,10 +994,8 @@ method_ping_t method_ping_drive(method_ping_t m)
     api.log.info("<< pong");
     t = api.sil.concrete(a);
     m.ctor_Pong = t.ctor_Pong;
-
     if (!api.buf.cmp(m.ping_id.value, m.ctor_Pong.ping_id.value))
         api.log.error("unexpected ping id");
-
     if (id_new_session_created == t.ctor_NewSession.id__)
     {
         api.log.info(".. new session created");
@@ -922,7 +1004,6 @@ method_ping_t method_ping_drive(method_ping_t m)
         //m = api.tml->methods->msgs_ack.drive(m);
         //api.log.info("mtx: >> ack");
     }
-
     reset_tg_api_type_system_flag = 0; // hack
     return m;
 }
@@ -934,13 +1015,13 @@ method_ping_t method_ping_drive(method_ping_t m)
 method_auth_sendCode_t method_auth_sendCode_init()
 {
     method_auth_sendCode_t m = method_auth_sendCode;
-    char* phone_number = "+79062720464";
-    m.phone_number.value = api.buf.add((ui8_t*)phone_number, (ui32_t)strlen(phone_number));
+    char * phone_number = "+79062720464";
+    m.phone_number.value = api.buf.add((ui8_t *)phone_number, (ui32_t)strlen(phone_number));
     ui32_t sms_type = 0;
     m.sms_type.value = api.buf.add_ui32(sms_type);
     m.api_id.value = api.buf.add_ui32(api_id_);
-    m.api_hash.value = api.buf.add((ui8_t*)api_hash_, 32);
-    m.lang_code.value = api.buf.add((ui8_t*)lang_code_, 2);
+    m.api_hash.value = api.buf.add((ui8_t *)api_hash_, 32);
+    m.lang_code.value = api.buf.add((ui8_t *)lang_code_, 2);
     return m;
 }
 

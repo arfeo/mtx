@@ -94,8 +94,8 @@ typedef struct constructors_
 
 typedef struct tgt_api_
 {
-    methods_t*      methods;
-    ctors_t* ctors;
+    methods_t   *   methods;
+    ctors_t * ctors;
 } tml_api_t;
 
 extern tml_api_t tml_api;

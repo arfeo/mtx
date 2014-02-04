@@ -24,7 +24,6 @@ abstract_t sil_abstract(tg_api_type_system_t t)
 {
     abstract_t a;
     a.params[0].type = TYPE_ID;
-
     // dispatcher must be optimized!
     if (t.method_req_pq.id__)
     {
@@ -103,7 +102,6 @@ abstract_t sil_abstract(tg_api_type_system_t t)
     }
     else
         api.log.error("can't abstract");
-
     return a;
 }
 tg_api_type_system_t t;
@@ -118,212 +116,199 @@ tg_api_type_system_t sil_concrete(abstract_t a)
 #ifdef _MSC_VER
     tg_api_type_system_t t = {};
 #elif defined __GNUC__
-
     //tg_api_type_system_t t = {};
     if (!reset_tg_api_type_system_flag)
     {
         reset_tg_api_type_system();
         reset_tg_api_type_system_flag++;
     }
-
 #endif
     ui32_t id = api.buf.get_ui32(a.params[0].value);
     param_t p;
     p.id = id;
     buf_t s = a.params[1].value; // hack
-
     switch (id)
     {
     case id_resPQ:
-        {
-            t.ctor_ResPQ.id__ = id;
-            t.ctor_ResPQ.type__ = RFC;
-            p.value = s;
-            p.type = TYPE_INT128;
-            t.ctor_ResPQ.nonce = api.sel.deserialize_param(p);
-            //api.buf.dump(t.ctor_ResPQ.nonce.value);
-            s = api.buf.add(s.data + 16, s.size - 16);
-            p.value = s;
-            p.type = TYPE_INT128;
-            t.ctor_ResPQ.server_nonce = api.sel.deserialize_param(p);
-            //api.buf.dump(t.ctor_ResPQ.server_nonce.value);
-            s = api.buf.add(s.data + 16, s.size - 16);
-            p.value = s;
-            p.type = TYPE_STRING;
-            t.ctor_ResPQ.pq = api.sel.deserialize_param(p);
-            //api.buf.dump(t.ctor_ResPQ.pq.value);
-            ui32_t l = t.ctor_ResPQ.pq.value.size + 4; // hack
-            s = api.buf.add(s.data + l, s.size - l);
-            p.value = s;
-            p.type = TYPE_VECTOR_LONG;
-            t.ctor_ResPQ.server_public_key_fingerprints = api.sel.deserialize_param(p);
-            //api.buf.dump(t.ctor_ResPQ.server_public_key_fingerprints.value);
-        }
-        break;
-
+    {
+        t.ctor_ResPQ.id__ = id;
+        t.ctor_ResPQ.type__ = RFC;
+        p.value = s;
+        p.type = TYPE_INT128;
+        t.ctor_ResPQ.nonce = api.sel.deserialize_param(p);
+        //api.buf.dump(t.ctor_ResPQ.nonce.value);
+        s = api.buf.add(s.data + 16, s.size - 16);
+        p.value = s;
+        p.type = TYPE_INT128;
+        t.ctor_ResPQ.server_nonce = api.sel.deserialize_param(p);
+        //api.buf.dump(t.ctor_ResPQ.server_nonce.value);
+        s = api.buf.add(s.data + 16, s.size - 16);
+        p.value = s;
+        p.type = TYPE_STRING;
+        t.ctor_ResPQ.pq = api.sel.deserialize_param(p);
+        //api.buf.dump(t.ctor_ResPQ.pq.value);
+        ui32_t l = t.ctor_ResPQ.pq.value.size + 4; // hack
+        s = api.buf.add(s.data + l, s.size - l);
+        p.value = s;
+        p.type = TYPE_VECTOR_LONG;
+        t.ctor_ResPQ.server_public_key_fingerprints = api.sel.deserialize_param(p);
+        //api.buf.dump(t.ctor_ResPQ.server_public_key_fingerprints.value);
+    }
+    break;
     case id_Server_DH_Params_ok:
-        {
-            ctor_Server_DH_Params_ok_t c;
-            c.id__ = id;
-            c.type__ = RFC;
-            p.value = s;
-            p.type = TYPE_INT128;
-            c.nonce = api.sel.deserialize_param(p);
-            //api.buf.dump(c.nonce.value);
-            s = api.buf.add(s.data + 16, s.size - 16);
-            p.value = s;
-            p.type = TYPE_INT128;
-            c.server_nonce = api.sel.deserialize_param(p);
-            //api.buf.dump(c.server_nonce.value);
-            s = api.buf.add(s.data + 16, s.size - 16);
-            p.value = s;
-            p.type = TYPE_STRING;
-            c.encrypted_answer = api.sel.deserialize_param(p);
-            //api.buf.dump(c.encrypted_answer.value);
-            t.ctor_Server_DH_Params.ctor_Server_DH_Params_ok = c;
-        }
-        break;
-
+    {
+        ctor_Server_DH_Params_ok_t c;
+        c.id__ = id;
+        c.type__ = RFC;
+        p.value = s;
+        p.type = TYPE_INT128;
+        c.nonce = api.sel.deserialize_param(p);
+        //api.buf.dump(c.nonce.value);
+        s = api.buf.add(s.data + 16, s.size - 16);
+        p.value = s;
+        p.type = TYPE_INT128;
+        c.server_nonce = api.sel.deserialize_param(p);
+        //api.buf.dump(c.server_nonce.value);
+        s = api.buf.add(s.data + 16, s.size - 16);
+        p.value = s;
+        p.type = TYPE_STRING;
+        c.encrypted_answer = api.sel.deserialize_param(p);
+        //api.buf.dump(c.encrypted_answer.value);
+        t.ctor_Server_DH_Params.ctor_Server_DH_Params_ok = c;
+    }
+    break;
     case id_server_DH_inner_data:
-        {
-            ctor_Server_DH_inner_data_t c;
-            c.id__ = id;
-            c.type__ = RFC;
-            p.value = s;
-            p.type = TYPE_INT128;
-            c.nonce = api.sel.deserialize_param(p);
-            //api.buf.dump(c.nonce.value);
-            s = api.buf.add(s.data + 16, s.size - 16);
-            p.value = s;
-            p.type = TYPE_INT128;
-            c.server_nonce = api.sel.deserialize_param(p);
-            //api.buf.dump(c.server_nonce.value);
-            s = api.buf.add(s.data + 16, s.size - 16);
-            p.value = s;
-            p.type = TYPE_INT;
-            c.g = api.sel.deserialize_param(p);
-            //api.buf.dump(c.g.value);
-            s = api.buf.add(s.data + 4, s.size - 4);
-            p.value = s;
-            p.type = TYPE_STRING;
-            c.dh_prime = api.sel.deserialize_param(p);
-            ui32_t l = c.dh_prime.value.size + 4; // hack
-            //api.buf.dump(c.dh_prime.value);
-            s = api.buf.add(s.data + l, s.size - l);
-            p.value = s;
-            p.type = TYPE_STRING;
-            c.g_a = api.sel.deserialize_param(p);
-            l = c.g_a.value.size + 4; // hack
-            //api.buf.dump(c.g_a.value);
-            s = api.buf.add(s.data + l, s.size - l);
-            p.value = s;
-            p.type = TYPE_INT;
-            c.server_time = api.sel.deserialize_param(p);
-            //api.buf.dump(c.server_time.value);
-            t.ctor_Server_DH_inner_data = c;
-        }
-        break;
-
+    {
+        ctor_Server_DH_inner_data_t c;
+        c.id__ = id;
+        c.type__ = RFC;
+        p.value = s;
+        p.type = TYPE_INT128;
+        c.nonce = api.sel.deserialize_param(p);
+        //api.buf.dump(c.nonce.value);
+        s = api.buf.add(s.data + 16, s.size - 16);
+        p.value = s;
+        p.type = TYPE_INT128;
+        c.server_nonce = api.sel.deserialize_param(p);
+        //api.buf.dump(c.server_nonce.value);
+        s = api.buf.add(s.data + 16, s.size - 16);
+        p.value = s;
+        p.type = TYPE_INT;
+        c.g = api.sel.deserialize_param(p);
+        //api.buf.dump(c.g.value);
+        s = api.buf.add(s.data + 4, s.size - 4);
+        p.value = s;
+        p.type = TYPE_STRING;
+        c.dh_prime = api.sel.deserialize_param(p);
+        ui32_t l = c.dh_prime.value.size + 4; // hack
+        //api.buf.dump(c.dh_prime.value);
+        s = api.buf.add(s.data + l, s.size - l);
+        p.value = s;
+        p.type = TYPE_STRING;
+        c.g_a = api.sel.deserialize_param(p);
+        l = c.g_a.value.size + 4; // hack
+        //api.buf.dump(c.g_a.value);
+        s = api.buf.add(s.data + l, s.size - l);
+        p.value = s;
+        p.type = TYPE_INT;
+        c.server_time = api.sel.deserialize_param(p);
+        //api.buf.dump(c.server_time.value);
+        t.ctor_Server_DH_inner_data = c;
+    }
+    break;
     case id_dh_gen_ok:
-        {
-            ctor_Set_client_DH_params_answer_ok_t c;
-            c.id__ = id;
-            c.type__ = RFC;
-            p.value = s;
-            p.type = TYPE_INT128;
-            c.nonce = api.sel.deserialize_param(p);
-            //api.buf.dump(c.nonce.value);
-            s = api.buf.add(s.data + 16, s.size - 16);
-            p.value = s;
-            p.type = TYPE_INT128;
-            c.server_nonce = api.sel.deserialize_param(p);
-            //api.buf.dump(c.server_nonce.value);
-            s = api.buf.add(s.data + 16, s.size - 16);
-            p.value = s;
-            p.type = TYPE_INT128;
-            c.new_nonce_hash1 = api.sel.deserialize_param(p);
-            //api.buf.dump(c.new_nonce_hash1.value);
-            t.ctor_Set_client_DH_params_answer.ctor_Set_client_DH_params_answer_ok = c;
-        }
-        break;
-
+    {
+        ctor_Set_client_DH_params_answer_ok_t c;
+        c.id__ = id;
+        c.type__ = RFC;
+        p.value = s;
+        p.type = TYPE_INT128;
+        c.nonce = api.sel.deserialize_param(p);
+        //api.buf.dump(c.nonce.value);
+        s = api.buf.add(s.data + 16, s.size - 16);
+        p.value = s;
+        p.type = TYPE_INT128;
+        c.server_nonce = api.sel.deserialize_param(p);
+        //api.buf.dump(c.server_nonce.value);
+        s = api.buf.add(s.data + 16, s.size - 16);
+        p.value = s;
+        p.type = TYPE_INT128;
+        c.new_nonce_hash1 = api.sel.deserialize_param(p);
+        //api.buf.dump(c.new_nonce_hash1.value);
+        t.ctor_Set_client_DH_params_answer.ctor_Set_client_DH_params_answer_ok = c;
+    }
+    break;
     case id_msg_container:
+    {
+        //api.buf.dump(s);
+        ctor_MessageContainer_t c;
+        c.id__ = id;
+        c.type__  = API;
+        p.value = s;
+        p.type = TYPE_VECTOR_MESSAGE;
+        buf_t content = api.buf.add(p.value.data, p.value.size); // hack
+        p.value = api.buf.add_ui32(id_Vector); // hack
+        p.value = api.buf.cat(p.value, content);
+        p = api.sel.deserialize_param(p);
+        buf_t b;
+        for (int i = 0; i < 2; ++i)
         {
-            //api.buf.dump(s);
-            ctor_MessageContainer_t c;
-            c.id__ = id;
-            c.type__  = API;
-            p.value = s;
-            p.type = TYPE_VECTOR_MESSAGE;
-            buf_t content = api.buf.add(p.value.data, p.value.size); // hack
-            p.value = api.buf.add_ui32(id_Vector); // hack
-            p.value = api.buf.cat(p.value, content);
-            p = api.sel.deserialize_param(p);
-            buf_t b;
-
-            for (int i = 0; i < 2; ++i)
-            {
-                //api.buf.dump(p.value);
-                b = api.hdl.deheader(p.value, CTER);
-                abstract_t a = api.sel.deserialize(b);
-                t = api.sil.concrete(a);
-                ui32_t l = b.size + 16; // msg_id, seqn, len
-                p.value = api.buf.add(p.value.data + l, p.value.size - l);
-            }
+            //api.buf.dump(p.value);
+            b = api.hdl.deheader(p.value, CTER);
+            abstract_t a = api.sel.deserialize(b);
+            t = api.sil.concrete(a);
+            ui32_t l = b.size + 16; // msg_id, seqn, len
+            p.value = api.buf.add(p.value.data + l, p.value.size - l);
         }
-        break;
-
+    }
+    break;
     case id_new_session_created:
-        {
-            ctor_NewSession_t c;
-            c.id__ = id;
-            c.type__ = API;
-            p.value = s;
-            p.type = TYPE_LONG;
-            c.first_msg_id = api.sel.deserialize_param(p);
-            //api.buf.dump(c.first_msg_id.value);
-            s = api.buf.add(s.data + 8, s.size - 8);
-            p.value = s;
-            p.type = TYPE_LONG;
-            c.unique_id = api.sel.deserialize_param(p);
-            //api.buf.dump(c.unique_id.value);
-            s = api.buf.add(s.data + 8, s.size - 8);
-            p.value = s;
-            p.type = TYPE_LONG;
-            c.server_salt = api.sel.deserialize_param(p);
-            //api.buf.dump(c.server_salt.value);
-            t.ctor_NewSession = c;
-        }
-        break;
-
+    {
+        ctor_NewSession_t c;
+        c.id__ = id;
+        c.type__ = API;
+        p.value = s;
+        p.type = TYPE_LONG;
+        c.first_msg_id = api.sel.deserialize_param(p);
+        //api.buf.dump(c.first_msg_id.value);
+        s = api.buf.add(s.data + 8, s.size - 8);
+        p.value = s;
+        p.type = TYPE_LONG;
+        c.unique_id = api.sel.deserialize_param(p);
+        //api.buf.dump(c.unique_id.value);
+        s = api.buf.add(s.data + 8, s.size - 8);
+        p.value = s;
+        p.type = TYPE_LONG;
+        c.server_salt = api.sel.deserialize_param(p);
+        //api.buf.dump(c.server_salt.value);
+        t.ctor_NewSession = c;
+    }
+    break;
     case id_pong:
-        {
-            ctor_Pong_t c;
-            c.id__ = id;
-            c.type__ = API;
-            p.value = s;
-            p.type = TYPE_LONG;
-            c.msg_id = api.sel.deserialize_param(p);
-            //api.buf.dump(c.msg_id.value);
-            s = api.buf.add(s.data + 8, s.size - 8);
-            p.value = s;
-            p.type = TYPE_LONG;
-            c.ping_id = api.sel.deserialize_param(p);
-            //api.buf.dump(c.ping_id.value);
-            t.ctor_Pong = c;
-        }
-        break;
-
+    {
+        ctor_Pong_t c;
+        c.id__ = id;
+        c.type__ = API;
+        p.value = s;
+        p.type = TYPE_LONG;
+        c.msg_id = api.sel.deserialize_param(p);
+        //api.buf.dump(c.msg_id.value);
+        s = api.buf.add(s.data + 8, s.size - 8);
+        p.value = s;
+        p.type = TYPE_LONG;
+        c.ping_id = api.sel.deserialize_param(p);
+        //api.buf.dump(c.ping_id.value);
+        t.ctor_Pong = c;
+    }
+    break;
     case id_bad_msg_notification:
-        {
-            api.log.error("id_bad_msg_notification received");
-        }
-        break;
-
+    {
+        api.log.error("id_bad_msg_notification received");
+    }
+    break;
     default:
         printf("current id: %.8x\n", id);
         api.log.error("unknown id");
     }
-
     return t;
 }

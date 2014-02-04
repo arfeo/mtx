@@ -17,17 +17,20 @@
 #define HASH_LENGTH 20
 #define BLOCK_LENGTH 64
 
-union _buffer {
+union _buffer
+{
     uint8_t b[BLOCK_LENGTH];
     uint32_t w[BLOCK_LENGTH / 4];
 };
 
-union _state {
+union _state
+{
     uint8_t b[HASH_LENGTH];
     uint32_t w[HASH_LENGTH / 4];
 };
 
-typedef struct sha1nfo {
+typedef struct sha1nfo
+{
     union _buffer buffer;
     uint8_t bufferOffset;
     union _state state;

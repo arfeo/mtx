@@ -28,7 +28,7 @@
 #include "hdl.h"
 
 #ifdef __GNUC__
-const api_t api =
+api_t api =
 {
     .std =
     {
@@ -144,9 +144,13 @@ const api_t api =
     }
 };
 #elif defined _MSC_VER
+
 api_t api =
 {
-    {},
+
+    {
+        std_time
+    },
 
     {
         net_open,
@@ -163,12 +167,15 @@ api_t api =
         buf_add_ui32,
         buf_add_ui64,
         buf_get_ui32,
-        buf_get_ui64
+        buf_get_ui64,
+        buf_rand,
+        buf_xor
     },
 
     {
-        app_init,
-        app_run
+        app_open,
+        app_run,
+        app_close
     },
 
     {
@@ -200,22 +207,19 @@ api_t api =
     },
 
     {
-        cmn_rand_array,
         cmn_fact,
         cmn_pow_mod
     },
 
     {
         sel_init,
-        sel_serialize,
-        sel_deserialize,
         sel_serialize_id,
         sel_serialize_param,
         sel_deserialize_param,
         sel_serialize_string,
         sel_deserialize_string,
-        sel_serialize_,
-        sel_deserialize_,
+        sel_serialize,
+        sel_deserialize,
         sel_deserialize_vector
     },
 
@@ -242,8 +246,21 @@ api_t api =
     {
         sil_abstract,
         sil_concrete
+    },
+
+    {
+        scl_open,
+        scl_run,
+        scl_close
+    },
+
+    {
+
+        hdl_header,
+        hdl_deheader
     }
 };
+
 #else
 #error Do not now how to initialize api
 #endif

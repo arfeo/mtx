@@ -39,21 +39,16 @@ void log_hex(array_t a, ui32_t s)
     int b = 8;
     int f = 0;
     fprintf(stderr, "size : %d\n", s);
-
     for (ui32_t i = 0; i < s; i++)
     {
         if (!i)
             fprintf(stderr, "%.4x | ", i), f = 1;
-
         if (!(i % m) && i)
             fprintf(stderr, "\n%.4x | ", i), f = 1;
-
         if (!(i % b) && i && !f)
             fprintf(stderr, " ");
-
         fprintf(stderr, "%.2x ", a[i]);
         f = 0;
     }
-
     fprintf(stderr, "\n");
 }

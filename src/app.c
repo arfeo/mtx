@@ -18,11 +18,11 @@ app_t app_open()
 }
 ui8_t app_run(app_t app)
 {
-    api.scl.run(app.scl);
+    api.scl.run();
     return app.exit_code;
 }
 ui8_t app_close(app_t app)
 {
-    api.scl.close(app.scl);
+    api.scl.close();
     return app.exit_code;
 }

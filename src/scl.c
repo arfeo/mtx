@@ -29,14 +29,14 @@ extern void scl_run()
     ui32_t q;
     api.log.info("how many pings?");
     scanf ("%d",&q);
-    for (int i = 0; i < q; ++i)
+    for (ui32_t i = 0; i < q; ++i)
     {
         printf(product);
         printf(": ping (try #%d)\n", i);
         api.srl.ping();
     }
 }
-extern void scl_close(scl_t scl)
+extern void scl_close()
 {
     net_t n = shared_rc_get_net();
     api.net.close(n);

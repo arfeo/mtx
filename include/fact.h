@@ -17,6 +17,6 @@
 
 #include <stdint.h>
 
-EXTERNC void factor(uint64_t pq, uint32_t* p, uint32_t* q);
+EXTERNC void factor(uint64_t pq, uint32_t * p, uint32_t * q);
 
 #endif

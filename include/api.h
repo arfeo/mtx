@@ -27,7 +27,7 @@ typedef struct net_api_
 
 typedef struct buf_api_
 {
-    METHOD(add, buf_t, ui8_t*, ui32_t)
+    METHOD(add, buf_t, ui8_t *, ui32_t)
     METHOD(cat, buf_t, buf_t, buf_t)
     METHOD(dump, void, buf_t)
     METHOD(cmp, ui8_t, buf_t, buf_t)
@@ -82,7 +82,7 @@ typedef struct srl_api_
 
 typedef struct cmn_api_
 {
-    METHOD(fact, void, ui64_t, ui32_t*, ui32_t*)
+    METHOD(fact, void, ui64_t, ui32_t *, ui32_t *)
     METHOD(pow_mod, buf_t, buf_t, buf_t, buf_t)
 } cmn_api_t;
 
@@ -131,8 +131,8 @@ typedef struct sil_api_
 typedef struct scl_api_
 {
     METHOD(open, scl_t)
-    METHOD(run, void, scl_t)
-    METHOD(close, void, scl_t)
+    METHOD(run, void, void)
+    METHOD(close, void, void)
 } scl_api_t;
 
 typedef struct hdl_api_
@@ -155,7 +155,7 @@ typedef struct api_
     cmn_api_t       cmn;
     sel_api_t       sel;
     enl_api_t       enl;
-    tml_api_t*      tml;
+    tml_api_t   *   tml;
     hsh_api_t       hsh;
     cry_api_t       cry;
     stk_api_t       stk;
@@ -164,6 +164,6 @@ typedef struct api_
     hdl_api_t       hdl;
 } api_t;
 
-extern const api_t api;
+extern api_t api;
 
 #endif
