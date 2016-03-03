@@ -21,8 +21,6 @@ void log_error(string_t s)
 {
     fprintf(stdout, product);
     fprintf(stderr, ": error: %s\n", s);
-    fprintf(stderr, "Sorry, send me a mail about this error to pavel.morozkin@gmail.com.\n");
-    fprintf(stderr, "I will try to fix it and do all possible for you.\n");
     exit(EXIT_FAILURE);
 }
 void log_debug()
