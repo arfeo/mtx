@@ -10,19 +10,25 @@
 
 app_t app_open()
 {
-    app_t app;
-    app.exit_code = 0;
-    reset_shared_rc();
-    app.scl = api.scl.open();
-    return app;
+  app_t app;
+
+  app.exit_code = 0;
+  reset_shared_rc();
+  app.scl = api.scl.open();
+
+  return app;
 }
+
 ui8_t app_run(app_t app)
 {
-    api.scl.run();
-    return app.exit_code;
+  api.scl.run();
+
+  return app.exit_code;
 }
+
 ui8_t app_close(app_t app)
 {
-    api.scl.close();
-    return app.exit_code;
+  api.scl.close();
+
+  return app.exit_code;
 }

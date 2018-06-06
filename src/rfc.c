@@ -10,6 +10,7 @@
 
 rfc_t rfc_init(sel_t sel)
 {
-    rfc_t rfc;
-    return rfc;
+  rfc_t rfc;
+
+  return rfc;
 }

@@ -16,14 +16,14 @@ extern buf_t enl_decrypt(buf_t, msg_t);
 
 typedef enum get_params_mode_
 {
-    MODE_C2S,
-    MODE_S2C
+  MODE_C2S,
+  MODE_S2C,
 } get_params_mode_t;
 
 typedef struct aes_params_
 {
-    buf_t aes_key;
-    buf_t aes_iv;
+  buf_t         aes_key;
+  buf_t         aes_iv;
 } aes_params_t;
 
 extern aes_params_t enl_get_params(buf_t, buf_t, get_params_mode_t);

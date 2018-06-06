@@ -13,17 +13,12 @@
 
 extern sel_t sel_init(trl_t trl);
 extern buf_t sel_serialize_id(buf_t b);
-
 extern buf_t sel_serialize_param(param_t p);
 extern param_t sel_deserialize_param(param_t p);
-
 extern buf_t sel_serialize_string(buf_t b);
 extern buf_t sel_deserialize_string(buf_t b);
-
 extern buf_t sel_serialize(abstract_t a);
 extern abstract_t sel_deserialize(buf_t b);
-
 extern buf_t sel_deserialize_vector(param_t p);
-
 
 #endif /* defined(__mtx__sel__) */

@@ -6,47 +6,58 @@
 //  Copyright (c) 2014 Pavel Morozkin. All rights reserved.
 //
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "types.h"
 #include "setup.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
 void log_info(string_t s, ...)
 {
-    fprintf(stdout, product);
-    fprintf(stdout, ": info: %s\n", s);
+  fprintf(stdout, product);
+  fprintf(stdout, ": info: %s\n", s);
 }
+
 void log_error(string_t s)
 {
-    fprintf(stdout, product);
-    fprintf(stderr, ": error: %s\n", s);
-    exit(EXIT_FAILURE);
+  fprintf(stdout, product);
+  fprintf(stderr, ": error: %s\n", s);
+  exit(EXIT_FAILURE);
 }
+
 void log_debug()
 {
-    return;
+  return;
 }
+
 void log_assert()
 {
-    return;
+  return;
 }
+
 void log_hex(array_t a, ui32_t s)
 {
-    int m = 16;
-    int b = 8;
-    int f = 0;
-    fprintf(stderr, "size : %d\n", s);
-    for (ui32_t i = 0; i < s; i++)
-    {
-        if (!i)
-            fprintf(stderr, "%.4x | ", i), f = 1;
-        if (!(i % m) && i)
-            fprintf(stderr, "\n%.4x | ", i), f = 1;
-        if (!(i % b) && i && !f)
-            fprintf(stderr, " ");
-        fprintf(stderr, "%.2x ", a[i]);
-        f = 0;
+  int m = 16;
+  int b = 8;
+  int f = 0;
+
+  fprintf(stderr, "size : %d\n", s);
+
+  for (ui32_t i = 0; i < s; i++) {
+    if (!i) {
+      fprintf(stderr, "%.4x | ", i), f = 1;
     }
-    fprintf(stderr, "\n");
+
+    if (!(i % m) && i) {
+      fprintf(stderr, "\n%.4x | ", i), f = 1;
+    }
+
+    if (!(i % b) && i && !f) {
+      fprintf(stderr, " ");
+    }
+
+    fprintf(stderr, "%.2x ", a[i]);
+    f = 0;
+  }
+
+  fprintf(stderr, "\n");
 }

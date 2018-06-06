@@ -5,6 +5,7 @@
 //  Created by Pavel Morozkin on 17.01.14.
 //  Copyright (c) 2014 Pavel Morozkin. All rights reserved.
 //
+
 #include "api.h"
 
 // srl -- service layer
@@ -20,10 +21,14 @@
 
 int main()
 {
-    api.log.info("hi dear");
-    app_t app;
-    app = api.app.open();
-    api.app.run(app);
-    api.log.info("bye bye");
-    return api.app.close(app);
+  app_t app;
+
+  api.log.info("Start.");
+
+  app = api.app.open();
+  api.app.run(app);
+
+  api.log.info("Finish.");
+
+  return api.app.close(app);
 }

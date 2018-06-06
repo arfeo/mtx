@@ -13,64 +13,74 @@
 #include <stdio.h>
 #include "setup.h"
 
-typedef uint64_t    ui64_t;
-typedef uint32_t    ui32_t;
-typedef int32_t     i32_t;
-typedef uint8_t     ui8_t;
+typedef uint64_t      ui64_t;
 
-typedef char * string_t;
-typedef ui8_t * array_t;
+typedef uint32_t      ui32_t;
+
+typedef int32_t       i32_t;
+
+typedef uint8_t       ui8_t;
+
+typedef char      *   string_t;
+
+typedef ui8_t     *   array_t;
 
 typedef struct buf_
 {
-    ui8_t data[max_buf_size];
-    ui32_t size;
+  ui8_t         data[max_buf_size];
+  ui32_t        size;
 } buf_t;
 
 typedef struct net_
 {
-    i32_t       sockfd;
+  i32_t         sockfd;
 } net_t;
 
 typedef struct trl_
 {
+  // ..
 } trl_t;
 
 typedef struct sel_
 {
+  // ..
 } sel_t;
 
 typedef struct rfc_
 {
+  // ..
 } rfc_t;
 
 typedef struct srl_
 {
+  // ..
 } srl_t;
 
 typedef struct scl_
 {
+  // ..
 } scl_t;
 
 typedef struct hdl_
 {
+  // ..
 } hdl_t;
 
 typedef struct app_
 {
-    ui8_t       exit_code;
-    scl_t       scl;
+  ui8_t         exit_code;
+  scl_t         scl;
 } app_t;
 
 typedef struct shared_rc_
 {
-    buf_t       key;
-    buf_t       salt;
-    buf_t       ssid;
-    int         seqn;
-    ui32_t      seqnh;
-    net_t       net;
-    buf_t       last_msg_id;
+  buf_t         key;
+  buf_t         salt;
+  buf_t         ssid;
+  int           seqn;
+  ui32_t        seqnh;
+  net_t         net;
+  buf_t         last_msg_id;
 } shared_rc_t;
 
 extern shared_rc_t shared_rc;
@@ -85,8 +95,8 @@ extern buf_t shared_rc_get_last_msg_id();
 
 typedef enum stk_mode_
 {
-    SEND,
-    SEND_RECEIVE
+  SEND,
+  SEND_RECEIVE,
 } stk_mode_t;
 
 #endif

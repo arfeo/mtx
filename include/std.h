@@ -9,8 +9,8 @@
 #ifndef mtx_std_h
 #define mtx_std_h
 
-#include "types.h"
 #include <time.h>
+#include "types.h"
 
 extern ui32_t std_time();
 

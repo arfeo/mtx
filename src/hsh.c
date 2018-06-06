@@ -11,8 +11,9 @@
 
 buf_t hsh_sha1(buf_t b)
 {
-    buf_t h;
-    sha1(b.data, b.size, h.data);
-    h.size = 20;
-    return h;
+  buf_t h;
+  sha1(b.data, b.size, h.data);
+  h.size = 20;
+
+  return h;
 }
